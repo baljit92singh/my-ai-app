@@ -1,0 +1,15 @@
+<div class="chat-container">
+  <div class="header">🤖 Mera AI Dost</div>
+
+  <div class="messages" id="scrollBox">
+    <div *ngFor="let m of messages" [class.user]="m.from==='user'" [class.ai]="m.from==='ai'">
+      <span [innerHTML]="formatMessage(m.text)"></span>
+    </div>
+    <div *ngIf="isLoading" class="ai">Soch raha hoon... ⏳</div>
+  </div>
+
+  <div class="input-box">
+    <input [(ngModel)]="userInput" (keyup.enter)="sendMessage()" placeholder="Type karo..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
